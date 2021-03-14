@@ -12,8 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author wuebk
- *
+ * Able to add, delete orders
  */
 @Entity
 @Table(name="orders")
