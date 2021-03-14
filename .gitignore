@@ -10,6 +10,7 @@ local.properties
 .loadpath
 .recommenders
 persistence.xml
+pom.properties
 
 # External tool builders
 .externalToolBuilders/
@@ -58,10 +59,8 @@ persistence.xml
 
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
-<<<<<<< Updated upstream
-#.project
-=======
+
 #.project
 /target/
 target/classes/META-INF/MANIFEST.MF
->>>>>>> Stashed changes
+
