@@ -10,6 +10,7 @@ local.properties
 .loadpath
 .recommenders
 persistence.xml
+pom.properties
 
 # External tool builders
 .externalToolBuilders/
