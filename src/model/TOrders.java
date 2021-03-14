@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,10 +32,18 @@ public class TOrders {
 	@Column(name="QUANTITY")
 	private int quantity;
 	@Column(name="ORDERDATE")
-	private String orderDate;
+	private LocalDate orderDate;
 	
 	//gets sets
 	
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -66,11 +76,11 @@ public class TOrders {
 		this.quantity = quantity;
 	}
 	
-	public String getOrderDate() {
+	public LocalDate getOrderDate() {
 		return orderDate;
 	}
 	
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
 	
