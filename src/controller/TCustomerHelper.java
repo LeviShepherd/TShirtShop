@@ -19,7 +19,7 @@ import model.TCustomer;
 public class TCustomerHelper {
 	static EntityManagerFactory emManager = Persistence.createEntityManagerFactory("TShirtShop");
 	
-	public void insertTCustomer(TCustomer s) {
+	public void insertCustomer(TCustomer s) {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(s);
@@ -27,17 +27,26 @@ public class TCustomerHelper {
 		em.close();
 	}
 	
-	public List<TCustomer> showAllCustomers(){
+	public void editCustomer(TCustomer toEdit) {
 		EntityManager em = emManager.createEntityManager();
-		List<TCustomer> allCities = em.createQuery("SELECT i FROM TCustomer i").getResultList();
-		return allCities;
+		em.getTransaction().begin();
+		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from customers where C.name = :selectedname", TCustomer.class);
+		typedQuery.setParameter("selectedname", toEdit.getName());
+		
+		typedQuery.setMaxResults(1);
+		
+		TCustomer result = typedQuery.getSingleResult();
+		
+		
+		
 	}
+
 	
-	public void deleteZip(TCustomer toDelete) {
+	public void deleteCustomer(TCustomer toDelete) {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();		
-		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from towns C where C.name = :selectedname", TCustomer.class);
-		typedQuery.setParameter("selectedzipCode", toDelete.getName());
+		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from customers C where C.name = :selectedname", TCustomer.class);
+		typedQuery.setParameter("selectedname", toDelete.getName());
 		
 		typedQuery.setMaxResults(1);
 		
@@ -47,15 +56,24 @@ public class TCustomerHelper {
 		em.getTransaction().commit();
 		em.close();
 	}
-	
-	
-	public List<TCustomer> lookForZip(String Zip){
+
+	public TCustomer searchForName(String name) {//search through list of customers for the entity name that matches desired name
+		TCustomer foundCustomer = new TCustomer();
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<TCustomer> tQ = em.createQuery("select C from customers C where C.name = :selectedname", TCustomer.class);
-		tQ.setParameter("selectedzipCode", Zip);
-		List<TCustomer> foundZip = tQ.getResultList();
+		
+		TypedQuery<TCustomer> typedQuery = em.createQuery("  ");//need search logic**** selectedCustomer
+		typedQuery.setParameter("selectedCustomer", name);
+		
+		foundCustomer = typedQuery.getResultList();
 		em.close();
-		return foundZip;
+		
+		return foundCustomer;
+	}
+	
+	public List<TCustomer> showAllCustomers(){
+		EntityManager em = emManager.createEntityManager();
+		List<TCustomer> allCities = em.createQuery("SELECT i FROM TCustomer i").getResultList();
+		return allCities;
 	}
 }
