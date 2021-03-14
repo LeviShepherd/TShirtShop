@@ -14,7 +14,7 @@ import model.TCustomer;
 
 /**
  * @author wuebk
- *testing
+ *TESTING
  */
 public class TCustomerHelper {
 	static EntityManagerFactory emManager = Persistence.createEntityManagerFactory("TShirtShop");
