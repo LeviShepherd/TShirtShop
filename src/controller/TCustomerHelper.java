@@ -36,7 +36,7 @@ public class TCustomerHelper {
 	public void deleteZip(TCustomer toDelete) {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();		
-		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from towns where C.name = :selectedname", TCustomer.class);
+		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from towns C where C.name = :selectedname", TCustomer.class);
 		typedQuery.setParameter("selectedzipCode", toDelete.getName());
 		
 		typedQuery.setMaxResults(1);
@@ -52,7 +52,7 @@ public class TCustomerHelper {
 	public List<TCustomer> lookForZip(String Zip){
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<TCustomer> tQ = em.createQuery("select C from customers where C.name = :selectedname", TCustomer.class);
+		TypedQuery<TCustomer> tQ = em.createQuery("select C from customers C where C.name = :selectedname", TCustomer.class);
 		tQ.setParameter("selectedzipCode", Zip);
 		List<TCustomer> foundZip = tQ.getResultList();
 		em.close();
