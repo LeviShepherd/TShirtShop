@@ -12,8 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author wuebk
- *
+ * Allow editing, adding and deletion of customer details
  */
 @Entity
 @Table(name="customers")
