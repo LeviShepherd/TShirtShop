@@ -27,18 +27,13 @@ public class TCustomerHelper {
 		em.close();
 	}
 	
-	public void editCustomer(TCustomer toEdit) {
+	public void updateCustomer(TCustomer toEdit) {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from customers where C.name = :selectedname", TCustomer.class);
-		typedQuery.setParameter("selectedname", toEdit.getName());
 		
-		typedQuery.setMaxResults(1);
-		
-		TCustomer result = typedQuery.getSingleResult();
-		
-		
-		
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	
@@ -57,18 +52,25 @@ public class TCustomerHelper {
 		em.close();
 	}
 
-	public TCustomer searchForName(String name) {//search through list of customers for the entity name that matches desired name
-		TCustomer foundCustomer = new TCustomer();
+	public List<TCustomer> searchForName(String name) {//search through list of customers for the entity name that matches desired name
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
 		
-		TypedQuery<TCustomer> typedQuery = em.createQuery("  ");//need search logic**** selectedCustomer
+		TypedQuery<TCustomer> typedQuery = em.createQuery("  ", TCustomer.class);//need search logic**** :selectedCustomer
 		typedQuery.setParameter("selectedCustomer", name);
 		
-		foundCustomer = typedQuery.getResultList();
+		List<TCustomer> foundCustomers = typedQuery.getResultList();
 		em.close();
 		
-		return foundCustomer;
+		return foundCustomers;
+	}
+	
+	public TCustomer searchForId(int id){
+		EntityManager em = emManager.createEntityManager();
+		em.getTransaction().begin();
+		TCustomer found = em.find(TCustomer.class, id);
+		em.close();
+		return found;
 	}
 	
 	public List<TCustomer> showAllCustomers(){
