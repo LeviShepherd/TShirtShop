@@ -36,6 +36,13 @@ public class CreateNewOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TOrdersHelper toh = new TOrdersHelper();
 		int custID = Integer.parseInt((request.getParameter("custID")));
 		String size = request.getParameter("size");
@@ -55,16 +62,12 @@ public class CreateNewOrderServlet extends HttpServlet {
 		
 
 		TOrders order = new TOrders(custID, size, color, quantity, ld);
+		toh.insertOrders(order);
+		
+		System.out.println("Order created");
+		System.out.println(order.toString());
 		
 		getServletContext().getRequestDispatcher("/new-order.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

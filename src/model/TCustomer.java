@@ -69,6 +69,11 @@ public class TCustomer {
 	public String printCustomer() {
 		return this.name + ", " + this.address;
 	}
+
+	@Override
+	public String toString() {
+		return "TCustomer [customerId=" + customerId + ", name=" + name + ", address=" + address + "]";
+	}
 	
 	
 	

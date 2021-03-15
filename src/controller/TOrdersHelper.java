@@ -34,4 +34,12 @@ public class TOrdersHelper {
 		return allOrders;
 	}
 	
+	public TOrders searchForOrderByID(Integer tempId) {
+		EntityManager em = emManager.createEntityManager();
+		em.getTransaction().begin();
+		TOrders found = em.find(TOrders.class, tempId);
+		em.close();
+		return found;
+	}
+	
 }

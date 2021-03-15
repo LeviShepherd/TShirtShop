@@ -117,5 +117,11 @@ public class TOrders {
 	public String display() {
 		return this.getCustomerId() + " : " + this.getSize() + ", " + this.getColor() + ", " + this.getQuantity() + ", " + this.getOrderDate();
 	}
+
+	@Override
+	public String toString() {
+		return "TOrders [orderId=" + orderId + ", customerId=" + customerId + ", size=" + size + ", color=" + color
+				+ ", quantity=" + quantity + ", orderDate=" + orderDate + "]";
+	}
 	
 }
