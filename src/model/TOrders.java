@@ -98,4 +98,8 @@ public class TOrders {
 		setQuantity(quantity);
 	}
 	
+	public String display() {
+		return this.getCustomerId() + " : " + this.getSize() + ", " + this.getColor() + ", " + this.getQuantity() + ", " + this.getOrderDate();
+	}
+	
 }
