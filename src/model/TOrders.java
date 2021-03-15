@@ -98,6 +98,22 @@ public class TOrders {
 		setQuantity(quantity);
 	}
 	
+	/**
+	 * @param customerId
+	 * @param size
+	 * @param color
+	 * @param quantity
+	 * @param orderDate
+	 */
+	public TOrders(int customerId, String size, String color, int quantity, LocalDate orderDate) {
+		super();
+		this.customerId = customerId;
+		this.size = size;
+		this.color = color;
+		this.quantity = quantity;
+		this.orderDate = orderDate;
+	}
+
 	public String display() {
 		return this.getCustomerId() + " : " + this.getSize() + ", " + this.getColor() + ", " + this.getQuantity() + ", " + this.getOrderDate();
 	}

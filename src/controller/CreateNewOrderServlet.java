@@ -1,11 +1,16 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.TCustomer;
+import model.TOrders;
 
 /**
  * STUBBED - NOT IMPLEMENTED
@@ -31,8 +36,27 @@ public class CreateNewOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TCustomerHelper tch = new TCustomerHelper();
+		TOrdersHelper toh = new TOrdersHelper();
+		int custID = Integer.parseInt((request.getParameter("custID")));
+		String size = request.getParameter("size");
+		String color = request.getParameter("color");
+		int quantity = Integer.parseInt((request.getParameter("quantity")));
 		
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		String year = request.getParameter("year");
+		LocalDate ld;
+		try {
+			ld = LocalDate.of(Integer.parseInt(year),
+				Integer.parseInt(month), Integer.parseInt(day));
+		} catch(NumberFormatException ex) {
+			ld = LocalDate.now();
+		}
+		
+
+		TOrders order = new TOrders(custID, size, color, quantity, ld);
+		
+		getServletContext().getRequestDispatcher("/new-order.jsp").forward(request, response);
 	}
 
 	/**

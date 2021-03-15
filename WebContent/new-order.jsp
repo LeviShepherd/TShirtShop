@@ -9,6 +9,7 @@
 </head>
 <body>
 <form action = "createNewOrderServlet" method="post">
+Customer ID#: <input type="text" name="custID"><br />
 Size: <input type="text" name="size"><br />
 Color: <input type="text" name="color"><br />
 Quantity: <input type="text" name="quantity"><br />
@@ -18,5 +19,6 @@ Date: <input type="text" name="month" placeholder="mm" size="4">
 <input type="submit" value="Create order">
 </form>
 <a href="index.html">Go Home</a>
+<a href="addCustomerServlet">Create a customer</a>
 </body>
 </html>
