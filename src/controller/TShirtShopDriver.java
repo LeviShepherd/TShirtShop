@@ -73,8 +73,10 @@ public class TShirtShopDriver {
 		}
 		
 		private static void viewAllCustomers() {
-			
-			TCH.showAllCustomers();
+			List<TCustomer> customerList = TCH.showAllCustomers();
+			for(TCustomer tc : customerList) {
+				System.out.println(tc.printCustomer());
+			}
 			
 		}
 		
@@ -94,7 +96,10 @@ public class TShirtShopDriver {
 		}
 		
 		private static void viewAllOrders() {
-			
+			List<TOrders> orderList = TOH.showAllOrders();
+			for(TOrders to : orderList) {
+				System.out.println(to.display());
+			}
 		}
 	
 	public static void main(String[] args) {
