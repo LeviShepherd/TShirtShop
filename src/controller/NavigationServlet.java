@@ -41,7 +41,10 @@ public class NavigationServlet extends HttpServlet {
 		
 		String path = "/viewAllCustomersServlet";
 		
-		if(act.contentEquals("delete")) {
+		if(act == null) {
+			getServletContext().getRequestDispatcher("/viewAllCustomersServlet").forward(request, response);
+			
+		} else if(act.equals("delete")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				TCustomer customerToDelete = tch.searchForId(tempId);
@@ -59,7 +62,7 @@ public class NavigationServlet extends HttpServlet {
 				System.out.println("Forgot to select a customer");
 			}
 		} else if(act.equals("add")) {
-			path = "/index.html";
+			path = "new-customer.jsp";
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);

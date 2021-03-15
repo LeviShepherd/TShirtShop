@@ -11,7 +11,7 @@
 <form action="editCustomerServlet" method="post">
 Customer Name: <input type="text" name="custName" value="${customerToEdit.name}">
 Customer Address: <input type="text" name="address" value="${customerToEdit.address}">
-<input type="hidden" name="id" value="${customerToEdit.id}">
+<input type="hidden" name="id" value="${customerToEdit.customerId}">
 <input type="submit" value="Save Customer">
 </form>
 </body>

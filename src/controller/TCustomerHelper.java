@@ -40,8 +40,9 @@ public class TCustomerHelper {
 	public void deleteCustomer(TCustomer toDelete) {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();		
-		TypedQuery<TCustomer> typedQuery = em.createQuery("select C from customers C where C.name = :selectedname", TCustomer.class);
-		typedQuery.setParameter("selectedname", toDelete.getName());
+		TypedQuery<TCustomer> typedQuery = em.createQuery("select c from TCustomer c where c.name = :selectedName and c.address = :selectedAddress", TCustomer.class);
+		typedQuery.setParameter("selectedName", toDelete.getName());
+		typedQuery.setParameter("selectedAddress", toDelete.getAddress());
 		
 		typedQuery.setMaxResults(1);
 		
@@ -56,7 +57,7 @@ public class TCustomerHelper {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
 		
-		TypedQuery<TCustomer> typedQuery = em.createQuery("  ", TCustomer.class);//need search logic**** :selectedCustomer
+		TypedQuery<TCustomer> typedQuery = em.createQuery("select c from TCustomer c where c.name = :selectedCustomer", TCustomer.class);//need search logic**** :selectedCustomer
 		typedQuery.setParameter("selectedCustomer", name);
 		
 		List<TCustomer> foundCustomers = typedQuery.getResultList();
