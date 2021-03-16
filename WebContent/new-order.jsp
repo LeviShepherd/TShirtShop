@@ -19,7 +19,5 @@ Date: <input type="text" name="month" placeholder="mm" size="4">
 <input type="submit" value="Create order">
 </form>
 <a href="index.html">Go Home</a>
-<a href="new-customer.jsp">Create a customer</a>
-<a href="edit-customer.jsp">Edit an existing customer</a>
 </body>
 </html>

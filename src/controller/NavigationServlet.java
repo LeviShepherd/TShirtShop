@@ -57,12 +57,12 @@ public class NavigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				TCustomer customerToEdit = tch.searchForId(tempId);
 				request.setAttribute("customerToEdit", customerToEdit);
-				path = "/edit-customer.jsp";
+				path = "edit-customer.jsp";
 			} catch(NumberFormatException e) {
 				System.out.println("Forgot to select a customer");
 			}
 		} else if(act.equals("add")) {
-			path = "new-customer.jsp";
+			path = "/new-customer.jsp";
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);
